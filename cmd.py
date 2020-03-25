@@ -132,7 +132,7 @@ def pick_vertex_color(mode):
     mesh = bpy.context.object.data
 
     #err0 = Msg("The selected object doesn't have a vertex color.")
-    if mode:
+    if mode == 2:
         utils.mode_o()
         vcol_layer = mesh.vertex_colors.active
 
@@ -154,7 +154,8 @@ def pick_vertex_color(mode):
     else:
         for ob in utils.selected():
             props = bpy.context.scene.kiamaterialtools_oa
-            color_vertex(ob, 2, props.material_color , 0)
+            utils.mode_o()
+            color_vertex(ob, 2, props.material_color , mode)
 
 
 

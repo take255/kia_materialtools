@@ -121,8 +121,9 @@ class KIAMATERIALTOOLS_PT_materialtools(utils.panel):
         box.prop(props, "material_color")
 
         row = box.row()
-        row.operator("kiamaterialtools.pick_vertex_color", text = 'pick').mode = True
-        row.operator("kiamaterialtools.pick_vertex_color", text = 'assign').mode = False
+        row.operator("kiamaterialtools.pick_vertex_color", text = 'pick').mode = 2
+        row.operator("kiamaterialtools.pick_vertex_color", text = 'assign').mode = 0
+        row.operator("kiamaterialtools.pick_vertex_color", text = 'assign selected').mode = 1
 
 
 
@@ -186,7 +187,7 @@ class KIAMATERIALTOOLS_OT_pick_vertex_color(Operator):
     """ First, select polugon face (not vertex) and execute this command."""
     bl_idname = "kiamaterialtools.pick_vertex_color"
     bl_label = ""
-    mode : BoolProperty()
+    mode : IntProperty()
     def execute(self, context):
         cmd.pick_vertex_color(self.mode)
         return {'FINISHED'}
