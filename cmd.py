@@ -85,7 +85,6 @@ def color_vertex(ob, vert, color,mode):
         elif mode == 1:
             if poly.select == True:
                 for loop_index in poly.loop_indices:
-                    print(loop_index)
                     vcol_layer.data[loop_index].color = color
             
 
@@ -109,7 +108,10 @@ def assign_vertex_color(mode):
     for ob in utils.selected():
         color_vertex(ob, 2, color , mode)
 
-    utils.mode_e()
+    if mode == 0:
+        utils.mode_o()
+    if mode == 1:
+        utils.mode_e()
 
 #---------------------------------------------------------------------------------------    
 #モデルのマテリアルカラーを取得。
